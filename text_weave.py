@@ -1,8 +1,6 @@
 import sys
 import pygame
 import colour
-
-# Actually Pillow which is a fork of PIL
 import PIL
 
 
