@@ -41,10 +41,6 @@ class pixel_square(object):
         self.letter = new_colour
 
 
-def hello_world():
-    print("hello world")
-
-
 def text_to_chars(filename):
     '''
     Reads in a text file and return a list with each charater as a separate item
