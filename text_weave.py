@@ -3,6 +3,11 @@ import pygame
 import colour
 import PIL
 
+#Global variables
+filename = "filename.txt"
+pixel_width = 10
+pixel_height = 20
+
 
 
 class pixel_square(object):
@@ -19,8 +24,7 @@ class pixel_square(object):
         pixel_square.tag +=1
 
     def __str__(self):
-        #return "letter:" + str(self.letter) + "width:" + str(self.wdith) + "height" + str(self.height) + "colour" + str(self.colour)
-        return "letter:"
+        return "letter:" + str(self.letter) + "width:" + str(self.wdith) + "height" + str(self.height) + "colour" + str(self.colour)
 
     def set_letter(self, new_letter=""):
         self.letter = new_letter
@@ -48,7 +52,10 @@ def default():
 
 def main():
     print('hello world')
-    print(pixel_square)
+
+    #test for __str__
+    ps1 = pixel_square("a", 10, 10, 10)
+    print(ps1)
 
 
 if __name__ == '__main__':
