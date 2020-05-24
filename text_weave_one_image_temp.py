@@ -1,9 +1,9 @@
-#import sys
+import sys
+#import colour
 from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
-filename = "texts/Raven.txt"
-savename = "weave_image"
+filename = "texts/raven.txt"
 
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
 pixel_width = 65
@@ -15,10 +15,6 @@ default_colour = (255, 255, 255, 255)
 allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
 
 text_font = ImageFont.truetype('fonts/times.ttf', 80)
-
-# Maximum height for outputted image in pixels
-max_image_height = 20000
-
 
 class pixel_square(object):
     """ This is a class for each "pixel" element in the final image."""
@@ -146,7 +142,6 @@ def text_to_pixels(chars):
 
     return temp_pixels
 
-
 def make_image(pixel_list):
     '''
     Take the list of pixel objects and converts it into a prinatble tiff file.
@@ -157,10 +152,11 @@ def make_image(pixel_list):
     pixel_list_length = 0
 
     for i in range(len(pixel_list)):
-        pixel_list_length += pixel_list[i].width
+        pixel_list_length = pixel_list_length + pixel_list[i].width
 
     # Determines the number of pixel rows in the final image
     num_of_rows = int(pixel_list_length / print_width)
+
     print_height = num_of_rows * pixel_height
 
     num_of_columns = int(print_width / pixel_width)
@@ -168,105 +164,41 @@ def make_image(pixel_list):
     print("This will make a print " + str(num_of_rows) + " squares high by " + str(num_of_columns) + " squares wide.")
     print("The resolution of the final print will be " + str(print_height) + " pixels high by " + str(print_width) + " pixels wide.")
 
+    # Create a new image with the appropriate dimensions
+    weave_img = Image.new('RGBA', (print_width, print_height), default_colour)
 
-    # Add a mechanism to split the image into parts if required - and create starting parameters
-    more_image_parts = True
+    # Makes an image drawing object to elements can be added
+    img_draw = ImageDraw.Draw(weave_img)
 
-    pixel_list_start_index = 0
-    pixel_list_end_index = 0
-    num_of_img_parts = 1
-    remaining_print_height = print_height
+    start_point_x = 0
+    start_point_y = 0
 
-    while more_image_parts:
+    # Draws rectangles and text on final image
+    for i in range(len(pixel_list)):
+        end_point_x = start_point_x + pixel_list[i].width
+        end_point_y = start_point_y + pixel_list[i].height
 
-        if remaining_print_height > max_image_height:
-            pixel_list_end_index += max_image_height
+        img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y), fill=(pixel_list[i].pixel_colour))
 
-            # Creates a smaller partial pixel list that will be used to create the partial image
-            partial_pixel_list = pixel_list[pixel_list_start_index:pixel_list_end_index]
+        # Calculates the start point for the text
+        text_start_x = start_point_x + pixel_list[i].width / 5
+        text_start_y = start_point_y + pixel_list[i].height / 5
 
-            # Creates a new image with the appropriate dimensions
-            weave_img = Image.new('RGBA', (print_width, max_image_height), default_colour)
+        # Could add a conversion to white text if needed
 
-            # Makes an image drawing object to elements can be added
-            img_draw = ImageDraw.Draw(weave_img)
+        img_draw.text((text_start_x, text_start_y), pixel_list[i].letter, font=text_font, fill='black')
 
-            start_point_x = 0
-            start_point_y = 0
-
-            # Draws rectangles and text on final image
-            for i in range(len(partial_pixel_list)):
-                end_point_x = start_point_x + partial_pixel_list[i].width
-                end_point_y = start_point_y + partial_pixel_list[i].height
-
-                img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y), fill=(partial_pixel_list[i].pixel_colour))
-
-                # Calculates the start point for the text
-                text_start_x = start_point_x + partial_pixel_list[i].width / 5
-                text_start_y = start_point_y + partial_pixel_list[i].height / 5
-
-                # Could add a conversion to white text if needed
-
-                img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font, fill='black')
-
-                # Calculates start points for the next round in the for loop. Resets and incriments y at the end of a row.
-                if start_point_x <= print_width:
-                    start_point_x = end_point_x
-
-                else:
-                    start_point_x = 0
-                    start_point_y = end_point_y
-
-            temp_save_name = (savename + "_" + str(num_of_img_parts))
-            weave_img.save(temp_save_name + ".tif")
-
-            pixel_list_start_index = pixel_list_end_index + 1
-            num_of_img_parts += 1
-            remaining_print_height -= max_image_height
+        # Calculates start points for the next round in the for loop. Resets and incriments y at the end of a row.
+        if start_point_x <= print_width:
+            start_point_x = end_point_x
 
         else:
-            # This is the last partial image that will be saved,or the only if it is a small text file.
-            more_image_parts = False
-
-            pixel_list_end_index = remaining_print_height
-
-            partial_pixel_list = pixel_list[pixel_list_start_index:pixel_list_end_index]
-
-            # Creates a new image with the appropriate dimensions
-            # Note: might want to eventually trim this down and use something other than max_image_height
-            weave_img = Image.new('RGBA', (print_width, max_image_height), default_colour)
-
-            # Makes an image drawing object to elements can be added
-            img_draw = ImageDraw.Draw(weave_img)
-
             start_point_x = 0
-            start_point_y = 0
+            start_point_y = end_point_y
 
-            # Draws rectangles and text on final image
-            for i in range(len(partial_pixel_list)):
-                end_point_x = start_point_x + partial_pixel_list[i].width
-                end_point_y = start_point_y + partial_pixel_list[i].height
 
-                img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y), fill=(partial_pixel_list[i].pixel_colour))
+    weave_img.save('weave_test.png')
 
-                # Calculates the start point for the text
-                text_start_x = start_point_x + partial_pixel_list[i].width / 5
-                text_start_y = start_point_y + partial_pixel_list[i].height / 5
-
-                # Could add a conversion to white text if needed
-
-                img_draw.text((text_start_x, text_start_y), pixel_list[i].letter, font=text_font, fill='black')
-
-                # Calculates start points for the next round in the for loop. Resets and incriments y at the end of a row.
-                if start_point_x <= print_width:
-                    start_point_x = end_point_x
-
-                else:
-                    start_point_x = 0
-                    start_point_y = end_point_y
-
-            temp_save_name = (savename + "_" + str(num_of_img_parts))
-            weave_img.save(temp_save_name + ".tif")
 
 
 def main():
