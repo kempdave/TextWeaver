@@ -265,7 +265,7 @@ def make_image(pixel_list):
                     start_point_x = 0
                     start_point_y = end_point_y
 
-            temp_save_name = (savename + "_" + str(num_of_img_parts))
+            temp_save_name = ("output_images/" + savename + "_" + str(num_of_img_parts))
             weave_img.save(temp_save_name + ".tif")
 
 

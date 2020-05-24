@@ -197,7 +197,7 @@ def make_image(pixel_list):
             start_point_y = end_point_y
 
 
-    weave_img.save('weave_test.png')
+    weave_img.save('output_images/weave_test.png')
 
 
 
