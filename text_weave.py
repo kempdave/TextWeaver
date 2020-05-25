@@ -3,8 +3,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
 filename = "texts/Raven.txt"
-savename = "The Raven"
-imagetype = ".tif"
+savename = "Raven"
+imagetype = ".png"
 
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
 pixel_width = 65
@@ -12,14 +12,15 @@ pixel_height = 135
 
 # 15 inch wide at 300 ppi = 4500
 # 44 inches wide at 300 ppi = 13200
-print_width = 13200
+# 40" * 40" print = 12000 * 12000
+print_width = 12000
 default_colour = (255, 255, 255)
 allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
 
 text_font = ImageFont.truetype('fonts/times.ttf', 80)
 
 # Maximum height for outputted image in pixels
-max_image_height = 20000
+max_image_height = 12000
 
 
 class pixel_square(object):
@@ -184,6 +185,8 @@ def make_image(pixel_list):
         if remaining_print_height > max_image_height:
             pixel_list_end_index += max_image_height
 
+            print("printing...")
+
             # Creates a smaller partial pixel list that will be used to create the partial image
             partial_pixel_list = pixel_list[pixel_list_start_index:pixel_list_end_index]
 
@@ -219,7 +222,7 @@ def make_image(pixel_list):
                     start_point_x = 0
                     start_point_y = end_point_y
 
-            temp_save_name = (savename + "_" + str(num_of_img_parts))
+            temp_save_name = ("output_images/" + savename + "_" + str(num_of_img_parts))
             weave_img.save(temp_save_name + imagetype)
 
             pixel_list_start_index = pixel_list_end_index + 1
