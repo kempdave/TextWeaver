@@ -3,15 +3,17 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
 filename = "texts/Raven.txt"
-savename = "weave_image"
+savename = "The Raven"
+imagetype = ".tif"
 
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
 pixel_width = 65
 pixel_height = 135
 
 # 15 inch wide at 300 ppi = 4500
-print_width = 4500
-default_colour = (255, 255, 255, 255)
+# 44 inches wide at 300 ppi = 13200
+print_width = 13200
+default_colour = (255, 255, 255)
 allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
 
 text_font = ImageFont.truetype('fonts/times.ttf', 80)
@@ -58,45 +60,45 @@ def char_switcher(char):
     Case-like structure to convert characters to the paramters needed for each pixel_square object
     '''
     switcher = {
-        "a": ["1", pixel_width, pixel_height, (252, 255, 54, 255)],
-        "b": ["2", pixel_width, pixel_height, (0, 255, 54, 255)],
-        "c": ["3", pixel_width, pixel_height, (34, 255, 255, 255)],
-        "d": ["4", pixel_width, pixel_height, (255, 0, 251, 255)],
-        "e": ["5", pixel_width, pixel_height, (43, 0, 251, 255)],
-        "f": ["6", pixel_width, pixel_height, (253, 0, 0, 255)],
-        "g": ["7", pixel_width, pixel_height, (18, 0, 137, 255)],
-        "h": ["8", pixel_width, pixel_height, (13, 140, 139, 255)],
-        "i": ["9", pixel_width, pixel_height, (0, 101, 15, 255)],
-        "j": ["10", pixel_width * 2, pixel_height, (128, 0, 126, 255)],
-        "k": ["11", pixel_width * 2, pixel_height, (138, 0, 0, 255)],
-        "l": ["12", pixel_width * 2, pixel_height, (127, 128, 22, 255)],
-        "m": ["13", pixel_width * 2, pixel_height, (169, 169, 169, 255)],
-        "n": ["14", pixel_width * 2, pixel_height, (211, 211, 211, 255)],
-        "o": ["15", pixel_width * 2, pixel_height, (0, 0, 0, 255)],
-        "p": ["16", pixel_width * 2, pixel_height, (252, 255, 54, 255)],
-        "q": ["17", pixel_width * 2, pixel_height, (0, 255, 54, 255)],
-        "r": ["18", pixel_width * 2, pixel_height, (34, 255, 255, 255)],
-        "s": ["19", pixel_width * 2, pixel_height, (255, 0, 251, 255)],
-        "t": ["20", pixel_width * 2, pixel_height, (43, 0, 251, 255)],
-        "u": ["21", pixel_width * 2, pixel_height, (253, 0, 0, 255)],
-        "v": ["22", pixel_width * 2, pixel_height, (18, 0, 137, 255)],
-        "w": ["23", pixel_width * 2, pixel_height, (13, 140, 139, 255)],
-        "x": ["24", pixel_width * 2, pixel_height, (0, 101, 15, 255)],
-        "y": ["25", pixel_width * 2, pixel_height, (128, 0, 126, 255)],
-        "z": ["26", pixel_width * 2, pixel_height, (138, 0, 0, 255)],
-        "0": ["000", pixel_width * 3, pixel_height, (253, 0, 0, 255)],
-        "1": ["111", pixel_width * 3, pixel_height, (127, 128, 22, 255)],
-        "2": ["222", pixel_width * 3, pixel_height, (169, 169, 169, 255)],
-        "3": ["333", pixel_width * 3, pixel_height, (211, 211, 211, 255)],
-        "4": ["444", pixel_width * 3, pixel_height, (0, 0, 0, 255)],
-        "5": ["555", pixel_width * 3, pixel_height, (252, 255, 54, 255)],
-        "6": ["666", pixel_width * 3, pixel_height, (0, 255, 54, 255)],
-        "7": ["777", pixel_width * 3, pixel_height, (34, 255, 255, 255)],
-        "8": ["888", pixel_width * 3, pixel_height, (255, 0, 251, 255)],
-        "9": ["999", pixel_width * 3, pixel_height, (43, 0, 251, 255)],
+        "a": ["1", pixel_width, pixel_height, (252, 255, 54)],
+        "b": ["2", pixel_width, pixel_height, (0, 255, 54)],
+        "c": ["3", pixel_width, pixel_height, (34, 255, 255)],
+        "d": ["4", pixel_width, pixel_height, (255, 0, 251)],
+        "e": ["5", pixel_width, pixel_height, (43, 0, 251)],
+        "f": ["6", pixel_width, pixel_height, (253, 0, 0)],
+        "g": ["7", pixel_width, pixel_height, (18, 0, 137)],
+        "h": ["8", pixel_width, pixel_height, (13, 140, 139)],
+        "i": ["9", pixel_width, pixel_height, (0, 101, 15)],
+        "j": ["10", pixel_width * 2, pixel_height, (128, 0, 126)],
+        "k": ["11", pixel_width * 2, pixel_height, (138, 0, 0)],
+        "l": ["12", pixel_width * 2, pixel_height, (127, 128, 22)],
+        "m": ["13", pixel_width * 2, pixel_height, (169, 169, 169)],
+        "n": ["14", pixel_width * 2, pixel_height, (211, 211, 211)],
+        "o": ["15", pixel_width * 2, pixel_height, (0, 0, 0)],
+        "p": ["16", pixel_width * 2, pixel_height, (252, 255, 54)],
+        "q": ["17", pixel_width * 2, pixel_height, (0, 255, 54)],
+        "r": ["18", pixel_width * 2, pixel_height, (34, 255, 255)],
+        "s": ["19", pixel_width * 2, pixel_height, (255, 0, 251)],
+        "t": ["20", pixel_width * 2, pixel_height, (43, 0, 251)],
+        "u": ["21", pixel_width * 2, pixel_height, (253, 0, 0)],
+        "v": ["22", pixel_width * 2, pixel_height, (18, 0, 137)],
+        "w": ["23", pixel_width * 2, pixel_height, (13, 140, 139)],
+        "x": ["24", pixel_width * 2, pixel_height, (0, 101, 15)],
+        "y": ["25", pixel_width * 2, pixel_height, (128, 0, 126)],
+        "z": ["26", pixel_width * 2, pixel_height, (138, 0, 0)],
+        "0": ["000", pixel_width * 3, pixel_height, (253, 0, 0)],
+        "1": ["111", pixel_width * 3, pixel_height, (127, 128, 22)],
+        "2": ["222", pixel_width * 3, pixel_height, (169, 169, 169)],
+        "3": ["333", pixel_width * 3, pixel_height, (211, 211, 211)],
+        "4": ["444", pixel_width * 3, pixel_height, (0, 0, 0)],
+        "5": ["555", pixel_width * 3, pixel_height, (252, 255, 54)],
+        "6": ["666", pixel_width * 3, pixel_height, (0, 255, 54)],
+        "7": ["777", pixel_width * 3, pixel_height, (34, 255, 255)],
+        "8": ["888", pixel_width * 3, pixel_height, (255, 0, 251)],
+        "9": ["999", pixel_width * 3, pixel_height, (43, 0, 251)],
     }
     # Return switched char - if char is not in the list above return a white space
-    return switcher.get(char, [" ", pixel_width, pixel_height, (255, 255, 255, 255)])
+    return switcher.get(char, [" ", pixel_width, pixel_height, (255, 255, 255)])
 
 
 def text_to_chars(filename):
@@ -186,7 +188,7 @@ def make_image(pixel_list):
             partial_pixel_list = pixel_list[pixel_list_start_index:pixel_list_end_index]
 
             # Creates a new image with the appropriate dimensions
-            weave_img = Image.new('RGBA', (print_width, max_image_height), default_colour)
+            weave_img = Image.new('RGB', (print_width, max_image_height), default_colour)
 
             # Makes an image drawing object to elements can be added
             img_draw = ImageDraw.Draw(weave_img)
@@ -218,7 +220,7 @@ def make_image(pixel_list):
                     start_point_y = end_point_y
 
             temp_save_name = (savename + "_" + str(num_of_img_parts))
-            weave_img.save(temp_save_name + ".tif")
+            weave_img.save(temp_save_name + imagetype)
 
             pixel_list_start_index = pixel_list_end_index + 1
             num_of_img_parts += 1
@@ -233,8 +235,7 @@ def make_image(pixel_list):
             partial_pixel_list = pixel_list[pixel_list_start_index:pixel_list_end_index]
 
             # Creates a new image with the appropriate dimensions
-            # Note: might want to eventually trim this down and use something other than max_image_height
-            weave_img = Image.new('RGBA', (print_width, max_image_height), default_colour)
+            weave_img = Image.new('RGB', (print_width, remaining_print_height), default_colour)
 
             # Makes an image drawing object to elements can be added
             img_draw = ImageDraw.Draw(weave_img)
@@ -266,7 +267,7 @@ def make_image(pixel_list):
                     start_point_y = end_point_y
 
             temp_save_name = ("output_images/" + savename + "_" + str(num_of_img_parts))
-            weave_img.save(temp_save_name + ".tif")
+            weave_img.save(temp_save_name + imagetype)
 
 
 def main():
