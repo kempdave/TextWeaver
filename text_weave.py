@@ -1,29 +1,30 @@
-#import sys
+# import sys
 from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
-filename = "texts/History_of_Art_Janson_GOOD.txt"
-savename = "Janson"
-imagetype = ".png"
+text_filename = "texts/History_of_Art_Janson_GOOD.txt"
+save_name = "Janson"
+image_type = ".png"
 
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
 pixel_width = 65
 pixel_height = 135
 
+# 12 inch wide at 300 ppi = 3600
 # 15 inch wide at 300 ppi = 4500
 # 44 inches wide at 300 ppi = 13200
 # 40" * 40" print = 12000 * 12000
-print_width = 12000
+print_width = 3600
 default_colour = (255, 255, 255)
 allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
 
 text_font = ImageFont.truetype('fonts/times.ttf', 80)
 
 # Maximum height for outputted image in pixels
-max_image_height = 12000
+max_image_height = 3600
 
 
-class pixel_square(object):
+class PixelSquare(object):
     """ This is a class for each "pixel" element in the final image."""
 
     tag = 0  # used to store a tag for every instance in the class
@@ -36,8 +37,8 @@ class pixel_square(object):
         self.pixel_colour = temp_colour
 
         # increments tag for the next instance created so each instance has a unique tag
-        self.id = pixel_square.tag
-        pixel_square.tag += 1
+        self.id = PixelSquare.tag
+        PixelSquare.tag += 1
 
     def __str__(self):
         return ("letter: " + str(self.letter) + " width: " + str(self.width) + " height: " +
@@ -57,9 +58,9 @@ class pixel_square(object):
 
 
 def char_switcher(char):
-    '''
-    Case-like structure to convert characters to the paramters needed for each pixel_square object
-    '''
+    """
+    Case-like structure to convert characters to the parameters needed for each PixelSquare object
+    """
     switcher = {
         "a": ["1", pixel_width, pixel_height, (252, 255, 54)],
         "b": ["2", pixel_width, pixel_height, (0, 255, 54)],
@@ -103,15 +104,15 @@ def char_switcher(char):
 
 
 def text_to_chars(filename):
-    '''
-    Reads in a text file and return a list with each charater as a separate item
+    """
+    Reads in a text file and return a list with each character as a separate item
 
     Parameters:
     filename (string)
 
     Returns:
     list: where each element is a char from the original text file
-    '''
+    """
 
     with open(filename, "r", encoding='utf8') as f:
         text = f.read()
@@ -127,34 +128,35 @@ def text_to_chars(filename):
 
 
 def text_to_pixels(chars):
-    '''
-    Creates an pixel_square object for each character in the original text and paces these all in a list called temp_pixels[]
+    """
+    Creates an PixelSquare object for each character in the original text and paces these all in a list
+    called temp_pixels[]
 
     Parameters:
-    chars (list) #the list with each char as a seperate element
+    chars (list) #the list with each char as a separate element
 
     Returns:
-    temp_pixels(list of pixel_square objects)
+    temp_pixels(list of PixelSquare objects)
 
-    '''
+    """
 
     temp_pixels = []
 
     for i in range(len(chars)):
-        # Creates temporary list (params) so that the char_switcher list can be broken down into the value required for the
-        # initialization of the pixel_square object.
+        # Creates temporary list (params) so that the char_switcher list can be broken down into the value required
+        # for the initialization of the PixelSquare object.
         # (Note: if a list is passed to the object constructor the full list goes to the first parameter of the object.
         params = char_switcher(chars[i])
-        temp_pixels.append(pixel_square(params[0], params[1], params[2], params[3]))
+        temp_pixels.append(PixelSquare(params[0], params[1], params[2], params[3]))
 
     return temp_pixels
 
 
 def make_image(pixel_list):
-    '''
-    Take the list of pixel objects and converts it into a prinatble tiff file.
+    """
+    Take the list of pixel objects and converts it into a printable tiff file.
 
-    '''
+    """
 
     # Finds overall width of the linear pixel list
     pixel_list_length = 0
@@ -169,8 +171,8 @@ def make_image(pixel_list):
     num_of_columns = int(print_width / pixel_width)
 
     print("This will make a print " + str(num_of_rows) + " squares high by " + str(num_of_columns) + " squares wide.")
-    print("The resolution of the final print will be " + str(print_height) + " pixels high by " + str(print_width) + " pixels wide.")
-
+    print("The resolution of the final print will be " + str(print_height) + " pixels high by " + str(print_width) +
+          " pixels wide.")
 
     # Add a mechanism to split the image into parts if required - and create starting parameters
     more_image_parts = True
@@ -204,7 +206,8 @@ def make_image(pixel_list):
                 end_point_x = start_point_x + partial_pixel_list[i].width
                 end_point_y = start_point_y + partial_pixel_list[i].height
 
-                img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y), fill=(partial_pixel_list[i].pixel_colour))
+                img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
+                                   fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
                 text_start_x = start_point_x + partial_pixel_list[i].width / 5
@@ -214,7 +217,8 @@ def make_image(pixel_list):
 
                 img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font, fill='black')
 
-                # Calculates start points for the next round in the for loop. Resets and incriments y at the end of a row.
+                # Calculates start points for the next round in the for loop. Resets and increments y at the
+                # end of a row.
                 if start_point_x <= print_width:
                     start_point_x = end_point_x
 
@@ -222,8 +226,8 @@ def make_image(pixel_list):
                     start_point_x = 0
                     start_point_y = end_point_y
 
-            temp_save_name = ("output_images/" + savename + "_" + str(num_of_img_parts))
-            weave_img.save(temp_save_name + imagetype)
+            temp_save_name = ("output_images/" + save_name + "_" + str(num_of_img_parts))
+            weave_img.save(temp_save_name + image_type)
 
             pixel_list_start_index = pixel_list_end_index + 1
             num_of_img_parts += 1
@@ -251,7 +255,8 @@ def make_image(pixel_list):
                 end_point_x = start_point_x + partial_pixel_list[i].width
                 end_point_y = start_point_y + partial_pixel_list[i].height
 
-                img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y), fill=(partial_pixel_list[i].pixel_colour))
+                img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
+                                   fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
                 text_start_x = start_point_x + partial_pixel_list[i].width / 5
@@ -261,7 +266,8 @@ def make_image(pixel_list):
 
                 img_draw.text((text_start_x, text_start_y), pixel_list[i].letter, font=text_font, fill='black')
 
-                # Calculates start points for the next round in the for loop. Resets and incriments y at the end of a row.
+                # Calculates start points for the next round in the for loop.
+                # Resets and increments y at the end of a row.
                 if start_point_x <= print_width:
                     start_point_x = end_point_x
 
@@ -269,16 +275,16 @@ def make_image(pixel_list):
                     start_point_x = 0
                     start_point_y = end_point_y
 
-            temp_save_name = ("output_images/" + savename + "_" + str(num_of_img_parts))
-            weave_img.save(temp_save_name + imagetype)
+            temp_save_name = ("output_images/" + save_name + "_" + str(num_of_img_parts))
+            weave_img.save(temp_save_name + image_type)
 
 
 def main():
     # #test for __str__
-    # ps1 = pixel_square("a", 10, 10, 10)
+    # ps1 = PixelSquare("a", 10, 10, 10)
     # print(ps1)
 
-    chars = text_to_chars(filename)
+    chars = text_to_chars(text_filename)
     # #test for text to char
     # for i in range(len(chars)):
     #     print(chars[i])
@@ -287,9 +293,8 @@ def main():
     # print(char_switcher("a"))
     # print(char_switcher(chars[3]))
 
-
     # params = char_switcher("a")
-    # temp = pixel_square(params[0], params[1], params[2], params[3])
+    # temp = PixelSquare(params[0], params[1], params[2], params[3])
     # print("switcher: " + str(char_switcher("a")))
     # print(temp)
 
@@ -298,7 +303,7 @@ def main():
 
     make_image(pixels)
 
-    # # Test to confirm that pixel_square objects were correctly created
+    # # Test to confirm that PixelSquare objects were correctly created
     # for j in range(len(pixels)):
     #     print(pixels[j])
 

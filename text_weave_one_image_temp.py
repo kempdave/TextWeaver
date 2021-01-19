@@ -51,7 +51,7 @@ class pixel_square(object):
 
 def char_switcher(char):
     '''
-    Case-like structure to convert characters to the paramters needed for each pixel_square object
+    Case-like structure to convert characters to the paramters needed for each PixelSquare object
     '''
     switcher = {
         "a": ["1", pixel_width, pixel_height, (252, 255, 54, 255)],
@@ -121,13 +121,13 @@ def text_to_chars(filename):
 
 def text_to_pixels(chars):
     '''
-    Creates an pixel_square object for each character in the original text and paces these all in a list called temp_pixels[]
+    Creates an PixelSquare object for each character in the original text and paces these all in a list called temp_pixels[]
 
     Parameters:
     chars (list) #the list with each char as a seperate element
 
     Returns:
-    temp_pixels(list of pixel_square objects)
+    temp_pixels(list of PixelSquare objects)
 
     '''
 
@@ -135,7 +135,7 @@ def text_to_pixels(chars):
 
     for i in range(len(chars)):
         # Creates temporary list (params) so that the char_switcher list can be broken down into the value required for the
-        # initialization of the pixel_square object.
+        # initialization of the PixelSquare object.
         # (Note: if a list is passed to the object constructor the full list goes to the first parameter of the object.
         params = char_switcher(chars[i])
         temp_pixels.append(pixel_square(params[0], params[1], params[2], params[3]))
@@ -203,7 +203,7 @@ def make_image(pixel_list):
 
 def main():
     # #test for __str__
-    # ps1 = pixel_square("a", 10, 10, 10)
+    # ps1 = PixelSquare("a", 10, 10, 10)
     # print(ps1)
 
     chars = text_to_chars(filename)
@@ -217,7 +217,7 @@ def main():
 
 
     # params = char_switcher("a")
-    # temp = pixel_square(params[0], params[1], params[2], params[3])
+    # temp = PixelSquare(params[0], params[1], params[2], params[3])
     # print("switcher: " + str(char_switcher("a")))
     # print(temp)
 
@@ -226,7 +226,7 @@ def main():
 
     make_image(pixels)
 
-    # # Test to confirm that pixel_square objects were correctly created
+    # # Test to confirm that PixelSquare objects were correctly created
     # for j in range(len(pixels)):
     #     print(pixels[j])
 
