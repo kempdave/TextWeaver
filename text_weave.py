@@ -16,7 +16,7 @@ pixel_height = 135
 # 40" * 40" print = 12000 * 12000
 print_width = 3600
 default_colour = (255, 255, 255)
-allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
+allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\' \n"  # \n = escape character for newline
 
 text_font = ImageFont.truetype('fonts/times.ttf', 80)
 
