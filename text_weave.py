@@ -100,18 +100,22 @@ def char_switcher(char):
         "7": ["777", pixel_width * 3, pixel_height, (34, 255, 255)],
         "8": ["888", pixel_width * 3, pixel_height, (255, 0, 251)],
         "9": ["999", pixel_width * 3, pixel_height, (43, 0, 251)],
-        # "\n": [" ", pixel_width * 3, pixel_height, (255, 255, 255)],
+        # "\n": [" ", print_width, pixel_height, (0, 255, 255)],   
     }
-
+    '''
+    ### To be worked on - need to turn into a dictionary mapping but might not need it
     if (char == "\n") and (new_line_char is False):
         new_line_char = True
 
     elif (char == "\n") and (new_line_char is True):
-        switcher = {
-            "\n": [" ", print_width, pixel_height, (255, 255, 255)]
-        }
+       # switcher = {
+        #    "\n": [" ", print_width, pixel_height, (255, 255, 255)]
+         #      }
+        print('newline')
+
     else:
         new_line_char = True
+    '''
 
     # Return switched char - if char is not in the list above return a white space
     return switcher.get(char, [" ", pixel_width, pixel_height, (255, 255, 255)])
