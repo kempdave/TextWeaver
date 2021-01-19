@@ -61,6 +61,8 @@ def char_switcher(char):
     """
     Case-like structure to convert characters to the parameters needed for each PixelSquare object
     """
+    new_line_char = False
+
     switcher = {
         "a": ["1", pixel_width, pixel_height, (252, 255, 54)],
         "b": ["2", pixel_width, pixel_height, (0, 255, 54)],
@@ -98,7 +100,19 @@ def char_switcher(char):
         "7": ["777", pixel_width * 3, pixel_height, (34, 255, 255)],
         "8": ["888", pixel_width * 3, pixel_height, (255, 0, 251)],
         "9": ["999", pixel_width * 3, pixel_height, (43, 0, 251)],
+        # "\n": [" ", pixel_width * 3, pixel_height, (255, 255, 255)],
     }
+
+    if (char == "\n") and (new_line_char is False):
+        new_line_char = True
+
+    elif (char == "\n") and (new_line_char is True):
+        switcher = {
+            "\n": [" ", print_width, pixel_height, (255, 255, 255)]
+        }
+    else:
+        new_line_char = True
+
     # Return switched char - if char is not in the list above return a white space
     return switcher.get(char, [" ", pixel_width, pixel_height, (255, 255, 255)])
 
