@@ -2,8 +2,8 @@
 from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
-filename = "texts/Raven.txt"
-savename = "Raven"
+filename = "texts/History_of_Art_Janson_GOOD.txt"
+savename = "Janson"
 imagetype = ".png"
 
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
