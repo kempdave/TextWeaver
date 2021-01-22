@@ -230,13 +230,6 @@ def make_image(pixel_list):
                 temp_pixel_list_start_index += 1
                 pixel_list_end_index += 1
 
-            # for j in range(len(pixels)):
-            #     print("templinelength = " + str(temp_line_length_per_page))
-            #     print (pixel_list[temp_pixel_list_start_index])
-            #     temp_line_length_per_page += pixel_list[temp_pixel_list_start_index].width
-            #     temp_pixel_list_start_index += 1
-            #     pixel_list_end_index += 1
-
             print("printing...")
 
             # Creates a smaller partial pixel list that will be used to create the partial image
@@ -262,9 +255,10 @@ def make_image(pixel_list):
                     start_point_x = 0
                     end_point_x = start_point_x + partial_pixel_list[i].width
                     start_point_y = end_point_y
+                    end_point_y += pixel_height
 
                 img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
-                                   fill=partial_pixel_list[i].pixel_colour)
+                                       fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
                 text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
@@ -300,10 +294,6 @@ def make_image(pixel_list):
             # Take the remaining pixel square entries in the list - [x:y] between x and and y -- [x:] x until end
             partial_pixel_list = pixel_list[pixel_list_start_index:-1]
 
-            for j in range(len(partial_pixel_list)):
-                print(partial_pixel_list[j])
-
-
             # Creates a new image with the appropriate dimensions
             weave_img = Image.new('RGB', (print_width, remaining_print_height), default_colour)
 
@@ -324,9 +314,10 @@ def make_image(pixel_list):
                     start_point_x = 0
                     end_point_x = start_point_x + partial_pixel_list[i].width
                     start_point_y = end_point_y
+                    end_point_y += pixel_height
 
                 img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
-                                   fill=partial_pixel_list[i].pixel_colour)
+                                       fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
                 text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
