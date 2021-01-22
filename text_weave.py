@@ -124,7 +124,7 @@ def char_switcher(char):
     }
 
     # Return switched char - if char is not in the list above return a white space
-    return switcher.get(char, [" ", pixel_width, pixel_height, (255, 255, 255)])
+    return switcher.get(char, ["", pixel_width, pixel_height, (255, 255, 255)])
 
 
 def text_to_chars(filename):
@@ -215,17 +215,14 @@ def make_image(pixel_list):
 
         if remaining_print_height > max_image_height:
 
-            # Here is the problem pixel_list_end_index is based on the characters - max_image_height is based in pixels
-            # pixel_list_end_index += max_image_height
-
             # Determines the pixel_list_end_index for the partial list end index base on pixel in order to
             # accommodate characters that are longer than 1 "square"wide
             temp_line_length_per_page = 0
             temp_pixel_list_start_index = pixel_list_start_index
 
             while temp_line_length_per_page <= max_line_length_per_page:
-                print("templinelength = " + str(temp_line_length_per_page))
-                print(pixel_list[temp_pixel_list_start_index])
+                # print("templinelength = " + str(temp_line_length_per_page))
+                # print(pixel_list[temp_pixel_list_start_index])
                 temp_line_length_per_page += pixel_list[temp_pixel_list_start_index].width
                 temp_pixel_list_start_index += 1
                 pixel_list_end_index += 1
@@ -257,6 +254,13 @@ def make_image(pixel_list):
                     start_point_y = end_point_y
                     end_point_y += pixel_height
 
+                # Ends if it has gone off the page due to characters overflowing on the right side
+                # Basically accounting for the extra added white space
+                # Has to include start index so it works with the whole list
+                if end_point_y > max_image_height:
+                    pixel_list_end_index = pixel_list_start_index + i
+                    break
+
                 img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
                                    fill=partial_pixel_list[i].pixel_colour)
 
@@ -268,17 +272,15 @@ def make_image(pixel_list):
 
                 img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font, fill='black')
 
-                # Calculates start points for the next round in the for loop. Resets and increments y at the
-                # end of a row.
-                # if end_point_x <= print_width:
-                #     start_point_x = end_point_x
-
+                # Increments to next square (if not going over the edge
                 start_point_x = end_point_x
 
             temp_save_name = ("output_images/" + save_name + "_" + str(num_of_img_parts))
             weave_img.save(temp_save_name + image_type)
 
-            pixel_list_start_index = pixel_list_end_index + 1
+            # Gets ready for the next image
+            pixel_list_start_index = pixel_list_end_index
+
             num_of_img_parts += 1
             remaining_print_height -= max_image_height
 
@@ -287,7 +289,7 @@ def make_image(pixel_list):
             more_image_parts = False
 
             # Take the remaining pixel square entries in the list - [x:y] between x and and y -- [x:] x until end
-            partial_pixel_list = pixel_list[pixel_list_start_index:-1]
+            partial_pixel_list = pixel_list[pixel_list_start_index:]
 
             # Creates a new image with the appropriate dimensions
             weave_img = Image.new('RGB', (print_width, remaining_print_height), default_colour)
@@ -311,6 +313,12 @@ def make_image(pixel_list):
                     start_point_y = end_point_y
                     end_point_y += pixel_height
 
+                # Ends if it has gone off the page due to characters overflowing on the right side
+                # Basically accounting for the extra added white space
+                if end_point_y > max_image_height:
+                    pixel_list_end_index = pixel_list_start_index + i
+                    break
+
                 img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
                                    fill=partial_pixel_list[i].pixel_colour)
 
@@ -322,11 +330,7 @@ def make_image(pixel_list):
 
                 img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font, fill='black')
 
-                # Calculates start points for the next round in the for loop. Resets and increments y at the
-                # end of a row.
-                # if end_point_x <= print_width:
-                #     start_point_x = end_point_x
-
+                # Increments to next square (if not going over the edge
                 start_point_x = end_point_x
 
             temp_save_name = ("output_images/" + save_name + "_" + str(num_of_img_parts))
