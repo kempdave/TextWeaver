@@ -2,7 +2,7 @@
 from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
-text_filename = "texts/History_of_Art_Janson_GOOD.txt"
+text_filename = "texts/History_of_Art_Janson_SPACES.txt"
 save_name = "Janson"
 image_type = ".png"
 
@@ -80,7 +80,6 @@ def char_switcher(char):
     """
     Case-like structure to convert characters to the parameters needed for each PixelSquare object
     """
-    new_line_char = False
 
     switcher = {
         "a": ["1", pixel_width, pixel_height, (252, 255, 54)],
@@ -121,20 +120,6 @@ def char_switcher(char):
         "9": ["999", pixel_width * 3, pixel_height, (43, 0, 251)],
         # "\n": [" ", print_width, pixel_height, (255, 255, 255)],
     }
-    '''
-    ### To be worked on - need to turn into a dictionary mapping but might not need it
-    if (char == "\n") and (new_line_char is False):
-        new_line_char = True
-
-    elif (char == "\n") and (new_line_char is True):
-       # switcher = {
-        #    "\n": [" ", print_width, pixel_height, (255, 255, 255)]
-         #      }
-        print('newline')
-
-    else:
-        new_line_char = True
-    '''
 
     # Return switched char - if char is not in the list above return a white space
     return switcher.get(char, [" ", pixel_width, pixel_height, (255, 255, 255)])
@@ -184,8 +169,6 @@ def text_to_pixels(chars):
         # for the initialization of the PixelSquare object.
         # (Note: if a list is passed to the object constructor the full list goes to the first parameter of the object.
         params = char_switcher(chars[i])
-
-        # Add Newline fix here
 
         temp_pixels.append(PixelSquare(params[0], params[1], params[2], params[3]))
 
@@ -259,7 +242,7 @@ def make_image(pixel_list):
 
                 # Calculates start points for the next round in the for loop. Resets and increments y at the
                 # end of a row.
-                if start_point_x <= print_width:
+                if end_point_x <= print_width:
                     start_point_x = end_point_x
 
                 else:
