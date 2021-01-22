@@ -25,7 +25,8 @@ max_image_height = 3600
 
 
 default_colour = (255, 255, 255)
-# allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\' \n"  #\n = escape character for newline
+# \n = escape character for newline
+# allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\' \n"
 allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
 
 # Outputs to 72ppi, so must scale up for 300ppi
@@ -197,7 +198,6 @@ def make_image(pixel_list):
     # Determine the absolute line length for each page on a pixel basis
     max_line_length_per_page = print_width * (max_image_height / pixel_height)
 
-
     print("This will make a print " + str(num_of_rows) + " squares high by " + str(num_of_columns) + " squares wide.")
     print("The overall number of pixel squares will be " + str(int(pixel_list_length/pixel_width)))
     print("The resolution of the final print will be " + str(print_height) + " pixels high by " + str(print_width) +
@@ -224,8 +224,8 @@ def make_image(pixel_list):
             temp_pixel_list_start_index = pixel_list_start_index
 
             while temp_line_length_per_page <= max_line_length_per_page:
-                print ("templinelength = " + str(temp_line_length_per_page))
-                print (pixel_list[temp_pixel_list_start_index])
+                print("templinelength = " + str(temp_line_length_per_page))
+                print(pixel_list[temp_pixel_list_start_index])
                 temp_line_length_per_page += pixel_list[temp_pixel_list_start_index].width
                 temp_pixel_list_start_index += 1
                 pixel_list_end_index += 1
@@ -258,7 +258,7 @@ def make_image(pixel_list):
                     end_point_y += pixel_height
 
                 img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
-                                       fill=partial_pixel_list[i].pixel_colour)
+                                   fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
                 text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
@@ -274,11 +274,6 @@ def make_image(pixel_list):
                 #     start_point_x = end_point_x
 
                 start_point_x = end_point_x
-
-
-                # else:
-                #     start_point_x = 0
-                #     start_point_y = end_point_y
 
             temp_save_name = ("output_images/" + save_name + "_" + str(num_of_img_parts))
             weave_img.save(temp_save_name + image_type)
@@ -317,7 +312,7 @@ def make_image(pixel_list):
                     end_point_y += pixel_height
 
                 img_draw.rectangle((start_point_x, start_point_y, end_point_x, end_point_y),
-                                       fill=partial_pixel_list[i].pixel_colour)
+                                   fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
                 text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
