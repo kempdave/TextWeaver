@@ -6,22 +6,41 @@ text_filename = "texts/History_of_Art_Janson_GOOD.txt"
 save_name = "Janson"
 image_type = ".png"
 
+# Shaheer's Pixel are 15 x 32 (at 72 ppi)
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
-pixel_width = 65
-pixel_height = 135
+# 80pt text works well with 65x135
+# 60pt text works well with 45x80
+# 50pt text works well with
+pixel_width = 36
+pixel_height = 72
 
 # 12 inch wide at 300 ppi = 3600
 # 15 inch wide at 300 ppi = 4500
 # 44 inches wide at 300 ppi = 13200
 # 40" * 40" print = 12000 * 12000
 print_width = 3600
-default_colour = (255, 255, 255)
-allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\' \n"  # \n = escape character for newline
-
-text_font = ImageFont.truetype('fonts/times.ttf', 80)
 
 # Maximum height for outputted image in pixels
 max_image_height = 3600
+
+
+default_colour = (255, 255, 255)
+allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\' \n"  # \n = escape character for newline
+
+
+# Outputs to 72ppi, so must scale up for 300ppi
+# 19.2pt = 80pt
+# 14pt = 60pt
+# 12pt = 50pt
+text_font = ImageFont.truetype('fonts/times.ttf', 50)
+
+# Margins values for text within each pixel
+# e.g 0.2 = 20% which means 20 percent of the over pixel_height would be left as a margin for the text
+# This may need to be adjusted as different font sizes are used
+# 60 pt text works well with - text_left_margin_percent = 0.18,  text_top_margin_percent = 0.10
+# 50 pt text works well with - text_left_margin_percent = 0.18,  text_top_margin_percent = 0.12
+text_left_margin_percent = 0.18
+text_top_margin_percent = 0.12
 
 
 class PixelSquare(object):
@@ -165,6 +184,9 @@ def text_to_pixels(chars):
         # for the initialization of the PixelSquare object.
         # (Note: if a list is passed to the object constructor the full list goes to the first parameter of the object.
         params = char_switcher(chars[i])
+
+        # Add Newline fix here
+
         temp_pixels.append(PixelSquare(params[0], params[1], params[2], params[3]))
 
     return temp_pixels
@@ -228,8 +250,8 @@ def make_image(pixel_list):
                                    fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
-                text_start_x = start_point_x + partial_pixel_list[i].width / 5
-                text_start_y = start_point_y + partial_pixel_list[i].height / 5
+                text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
+                text_start_y = start_point_y + partial_pixel_list[i].height * text_top_margin_percent
 
                 # Could add a conversion to white text if needed
 
@@ -277,8 +299,8 @@ def make_image(pixel_list):
                                    fill=partial_pixel_list[i].pixel_colour)
 
                 # Calculates the start point for the text
-                text_start_x = start_point_x + partial_pixel_list[i].width / 5
-                text_start_y = start_point_y + partial_pixel_list[i].height / 5
+                text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
+                text_start_y = start_point_y + partial_pixel_list[i].height * text_top_margin_percent
 
                 # Could add a conversion to white text if needed
 
