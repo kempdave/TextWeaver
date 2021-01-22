@@ -2,7 +2,7 @@
 from PIL import Image, ImageDraw, ImageFont
 
 # Global parameters
-text_filename = "texts/History_of_Art_Janson_SPACES_short.txt"
+text_filename = "texts/History_of_Art_Janson_GOOD.txt"
 save_name = "Janson"
 image_type = ".png"
 
