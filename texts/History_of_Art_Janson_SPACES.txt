@@ -1,0 +1,615 @@
+Janson’s 
+
+History of Art 
+
+THE WESTERN TRADITION 
+
+Eighth Edition 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PENELOPE J. E. DAVIES 
+WALTER B. DENNY 
+FRIMA FOX HOFRICHTER 
+JOSEPH JACOBS 
+ANN M. ROBERTS 
+DAVID L. SIMON 
+
+
+Prentice Hall 
+
+Upper Saddle River London Singapore 
+Toronto Tokyo Sydney Hong Kong Mexico City 
+
+
+Editorial Director: Leah Jewell 
+
+Editor in Chief: Sarah Touborg 
+
+Senior Sponsoring Editor: Helen Ronan 
+
+Editorial Project Manager: David Nitti 
+
+Editorial Assistant: Carla Worner 
+
+Media Director: Brian Hyland 
+
+Media Editor: Alison Lorber 
+
+Director of Marketing: Brandy Dawson 
+
+Senior Marketing Manager: Laura Lee Manley 
+
+Marketing Assistant: Ashley Fallon 
+
+Senior Managing Editor: Ann Marie McCarthy 
+
+Assistant Managing Editor: Melissa Feimer 
+
+Senior Operations Specialist: Brian Mackey 
+
+Production Liaisons: Barbara Cappuccio and Marlene Gassier 
+
+AV Project Manager: Gail Cocker 
+
+Cartography: Peter Bull Art Studio 
+
+Senior Art Director: Pat Smythe 
+
+Site Supervisor, Pearson Imaging Center: Joe Conti 
+
+Pearson Imaging Center: Corin Skidds, Robert Uibelhoer, and Ron Walko 
+
+Cover Printer: Lehigh-Phoenix Color 
+
+Printer/Binder: Courier/Kendallville 
+
+
+
+This book was designed by 
+
+Laurence King Publishing Ltd, London. 
+
+www.laurenceking.com 
+
+
+Senior Editor: Susie May 
+Copy Editor: Robert Shore 
+Proofreader: Lisa Cutmore 
+Picture Researcher: Amanda Russell 
+
+Page and Cover Designers: Nick Newton and Randell Harris 
+Production Controller: Simon Walsh 
+
+
+Cover image: Titian, Man with a Blue Sleeve, ca. 1520. Oil on canvas, 
+32 x 26" (81.2 x 66.3 cm). The National Gallery, London. 
+
+
+Credits and acknowledgments borrowed from other sources and reproduced, with permission, in 
+this textbook appear on the appropriate page within text or on the credit pages in the back of this 
+book. 
+
+Copyright © 2011, 2007, 2004 Pearson Education, Inc., publishing as Prentice Hall, 1 Lake St., 
+Upper Saddle River, NJ 07458. All rights reserved. Manufactured in the United States of 
+America. This publication is protected by Copyright, and permission should be obtained from 
+the publisher prior to any prohibited reproduction, storage in a retrieval system, or transmission 
+in any form or by any means, electronic, mechanical, photocopying, recording, or likewise. To 
+obtain permission(s) to use material from this work, please submit a written request to Pearson 
+Education, Inc., Permissions Department, 1 Lake St., Upper Saddle River, NJ 07458 
+
+
+Library of Congress Cataloging-in-Publication Data 
+
+Janson, H. W. (Horst Woldemar) 
+
+Janson’s history of art: the western tradition / Penelope J.E. Davies ... [et. al]. -- 8th ed. 
+p. cm. 
+
+Includes bibliographical references and index. 
+
+ISBN 978-0-205-68517-2 (hardback) 
+
+1. Art—History. I. Davies, Penelope J. E., II. Janson, H. W. (Horst Woldemar), History of art. 
+III. Title. IV. Title: History of art. 
+
+N5300.J29 2009b 
+709—dc22 
+2009022617 
+
+10 98765432 
+
+
+Prentice Hall 
+
+is an imprint of 
+
+
+PEARSON 
+
+
+ISBN 10: 0-205-68517-X 
+ISBN 13: 978-0-205-68517-2 
+Exam Copy ISBN 10: 0-205-69518-3 
+ISBN 13: 978-0-205-69518-8 
+
+
+www.pearsonhighered.com 
+
+
+
+
+Contents 
+
+
+Preface xiv 
+
+Faculty and Student Resources for Teaching 
+and Learning with Jan son’s History of Art xix 
+
+Introduction xxi 
+
+
+PART ONE 
+
+THE ANCIENT WORLD 
+
+
+1 Prehistoric Art l 
+
+PALEOLITHIC ART 2 
+
+■ MATERIALS and techniques: Cave Fainting 5 
+
+Interpreting Prehistoric Painting 5 
+
+Paleolithic Carving 7 
+
+■ INFORMING ART: Telling Time: Labels and Periods 9 
+
+Paleolithic houses 11 
+
+NEOLITHIC ART 11 
+
+Settled Societies and Neolithic Art 11 
+
+Architecture in Europe: Tombs and Rituals 15 
+
+■ INFORMING ART: Dating Techniques 17 
+
+2 Ancient Near Eastern Art 21 
+
+SUMERIAN ART 22 
+
+Temple Architecture: Linking Heaven and Earth 23 
+
+■ MATERIALS AND TECHNIQUES: Mud Brick 23 
+
+Sculpture and Inlay 25 
+
+■ PRIMARY SOURCE: The Cilgamesh Epic 25 
+
+Visual Narratives 27 
+
+Cylinder Seals 29 
+
+■ THE ART HISTORIAN’S LENS: Losses Through Looting 29 
+
+ART OF AKKAD 30 
+
+Sculpture: Power and Narrative 30 
+
+NEO-SUMERIAN REVIVAL 32 
+
+
+Architecture: The Ziggurat of Ur 32 
+
+Sculpture: Figures o f Gudea 32 
+
+■ PRIMARY SOURCE: Texts on Gudea Figures from 
+
+La gash and Surrounding Areas, ca. 21 00 33 
+
+BABYLONIAN ART 33 
+
+The Code o f Hammurabi 34 
+
+ASSYRIAN ART 34 
+
+Art o f Empire: Expressing Royal Power 34 
+
+■ PRIMARY SOURCE: The Code of Hammurabi 35 
+
+LATE BABYLONIAN ART 37 
+
+The Royal Palace 38 
+
+REGIONAL NEAR EASTERN ART 38 
+
+The Hittites 38 
+
+The Phoenicians 38 
+
+The Hebrews 40 
+
+IRANIAN ART 41 
+
+Early Iranian Art 41 
+
+The Persian Empire: Cosmopolitan Heirs to the 
+Mesopotamian Tradition 41 
+
+Mesopotamia Between Persian and Islamic 
+Dominion 45 
+
+3 Egyptian Art 49 
+
+PREDYNASTIC AND EARLY DYNASTIC ART 50 
+
+The Palette of King Narmer 50 
+
+■ INFORMING ART: Egyptian Gods and Goddesses 52 
+
+THE OLD KINGDOM: A GOLDEN AGE 53 
+
+Old Kingdom Funerary Complexes 53 
+
+■ INFORMING ART: Major Periods in Ancient Egypt 54 
+
+The Pyramids at Giza: Reflecting a New Royal Role 55 
+
+■ MATERIALS AND TECHNIQUES: Building the Pyramids 56 
+
+■ PRIMARY SOURCE: Excerpt from the Pyramid Text of 
+
+Unis (r. 2341 -2311 bce) 58 
+
+Representing the Human Figure 59 
+
+THE MIDDLE KINGDOM: REASSERTING 
+TRADITION THROUGH THE ARTS 62 
+
+
+Royal Portraiture: Changing Expressions and 
+Proportions 62 
+
+Funerary Architecture 63 
+
+THE NEW KINGDOM: RESTORED GLORY 65 
+
+Royal Burials in the Valley of the Kings 65 
+
+Temples to the Gods 67 
+
+Block Statues 70 
+
+Images in New Kingdom Tombs 71 
+
+AKHENATEN AND THE AMARNA STYLE 72 
+
+The Amarna Style 72 
+
+Tutankhamun and the Aftermath of Amarna 75 
+
+■ THE ART HISTORIAN’S LENS: Interpreting Ancient 
+
+Travel Writers 75 
+
+PAPYRUS SCROLLS: 
+
+THE BOOK OF THE DEAD 77 
+
+■ PRIMARY SOURCE: The Book of the Dead 77 
+
+LATE EGYPT 78 
+
+4 Aegean Art 81 
+
+EARLY CYCLADIC ART 82 
+
+MINOAN ART 84 
+
+The “Palace” at Knossos 84 
+
+Wall Paintings: Representing Rituals and Nature 86 
+
+■ THE ART HISTORIAN’S LENS: Two Excavators, Legend, 
+
+and Archaeology 87 
+
+Minoan Pottery 89 
+
+Carved Minoan Stone Vessels 90 
+
+Late Minoan Art 92 
+
+MYCENAEAN ART 93 
+
+Architecture: Citadels 93 
+
+Mycenaean Tombs and Their Contents 96 
+
+Sculpture 99 
+
+5 Greek Art 103 
+
+THE EMERGENCE OF GREEK ART: THE 
+GEOMETRIC STYLE 104 
+
+■ INFORMING ART: Greek Gods and Goddesses 105 
+
+Geometric Style Pottery 105 
+
+Geometric Style Sculpture 107 
+
+THE ORIENTALIZING STYLE: HORIZONS 
+EXPAND 107 
+
+Miniature Vessels 108 
+
+ARCHAIC ART: ART OF THE CITY-STATE 109 
+
+The Rise o f Monumental Temple Architecture 109 
+
+STONE SCULPTURE 113 
+
+Architectural Sculpture: The Building Comes Alive 115 
+Vase Painting: Art of the Symposium 119 
+
+THE CLASSICAL AGE 123 
+
+Classical Sculpture 123 
+
+■ MATERIALS AND TECHNIQUES: The Indirect Lost-Wax 
+
+Process 128 
+
+Architecture and Sculpture on the Athenian 
+Akropolis 131 
+
+
+■ PRIMARY SOURCE: Aristotle (384-322 bce) 133 
+
+■ THE ART HISTORIAN’S LENS: Repatriation of 
+
+Cultural Heritage 134 
+
+■ PRIMARY SOURCE: Plutarch (ca. 46-after 11 9 ce) 136 
+
+THE LATE CLASSICAL PERIOD 141 
+
+Late Classical Architecture: Civic and Sacred 141 
+
+Late Classical sculpture 142 
+
+Painting in the Late Classical Age 146 
+
+THE AGE OF ALEXANDER AND THE 
+HELLENISTIC PERIOD 147 
+
+Architecture: The Scholarly Tradition and 
+Theatricality 148 
+
+City Planning 150 
+
+Hellenistic Sculpture: Expression and Movement 154 
+
+THE ART HISTORIAN’S LENS: J.J. Winckelmann and 
+the Apollo Belvedere 157 
+
+Hellenistic Painting 161 
+
+6 Etruscan Art 165 
+
+FUNERARY ART 165 
+
+Tombs and Their Contents 166 
+
+■ MATERIALS AND TECHNIQUES: Etruscan Gold-Working 169 
+
+ARCHITECTURE 173 
+
+City Planning 174 
+
+SCULPTURE 175 
+
+Dynamism in Terra Cotta and Bronze 175 
+
+7 Roman Art 181 
+
+EARLY ROME AND THE REPUBLIC 181 
+
+THE ART HISTORIAN’S LENS: Recognizing Copies: 
+
+The Case of the Laocoon 183 
+
+NEW DIRECTIONS IN ARCHITECTURE 183 
+
+Sculpture 188 
+
+■ PRIMARY SOURCE: Cicero (1 06-43 bce) 192 
+
+■ MATERIALS AND TECHNIQUES: Copying Greek 
+
+Sculptures 193 
+
+Painting and Mosaic 194 
+
+■ PRIMARY SOURCE: Polybius (ca. 200-ca. 11 8 bce) 194 
+
+THE EARLY EMPIRE 195 
+
+Architecture 196 
+
+■ THE ART HISTORIAN’S LENS: Two Pantheon Problems 202 
+
+Portrait Sculpture 203 
+
+Relief Sculpture 207 
+
+■ PRIMARY SOURCE: Josephus (37/8-ca. 1 00 ce) 210 
+
+Art and Architecture in the Provinces 213 
+
+Domestic Art and Architecture 216 
+
+THE LATE EMPIRE 222 
+
+Architecture 222 
+
+■ MATERIALS AND TECHNIQUES: Painted Stone in 
+
+Greece and Rome 223 
+
+Architecture in the Provinces 227 
+
+Portrait Sculpture 228 
+
+Relief Sculpture 229 
+
+
+VI CONTENTS 
+
+
+PART TWO 
+
+THE MIDDLE AGES 
+
+
+8 Early Jewish, Early Christian, 
+
+and Byzantine Art 235 
+
+EARLY JEWISH ART 237 
+
+EARLY CHRISTIAN ART 240 
+
+Christian Art before Constantine 240 
+
+■ INFORMING ART: The Life of Jesus 241 
+
+■ PRIMARY SOURCE: The Book of the Popes (Liber 
+
+Pontificalis) 244 
+
+Christian Art after O fficial Recognition of 
+Christianity 245 
+
+■ MATERIALS AND TECHNIQUES: Mosaics 248 
+
+BYZANTINE ART 254 
+
+Early Byzantine Art 254 
+
+■ PRIMARY SOURCE: Procopius of Caesarea (Sixth 
+
+Century) 260 
+
+The Iconoclastic Controversy 265 
+
+Middle Byzantine Art 265 
+
+■ PRIMARY SOURCE: St. Theodore the Studite 
+
+(759-826 ce) 266 
+
+Late Byzantine Art 273 
+
+■ INFORMING ART: Biblical and Celestial Beings 273 
+
+9 Islamic Art 279 
+
+THE FORMATION OF ISLAMIC ART 280 
+
+Religious Architecture 280 
+
+■ PRIMARY SOURCE: Muhammad Ibn Mahmud 
+
+Al-Amuli (Iran, 1 4th Century) 281 
+
+■ INFORMING ART: Islam and Its Messenger 283 
+
+Secular Architecture 284 
+
+THE DEVELOPMENT OF ISLAMIC STYLE 285 
+
+Religious Architecture 285 
+
+Luxury Arts 287 
+
+ISLAMIC ART AND THE PERSIAN 
+INHERITANCE 287 
+
+Architecture 287 
+
+Figural Art Forms in Iran 288 
+
+THE CLASSICAL AGE 290 
+
+THE ART HISTORIAN’S LENS: Spanish Islamic Art 
+and Europe in the Middle Ages 290 
+
+The Fatimid Artistic Impact 291 
+
+The Ayyuhids and the Seljuk Turks of Asia Minor 292 
+
+LATER CLASSICAL ART AND 
+ARCHITECTURE 294 
+
+Mongol Patronage 295 
+
+Timurid Patronage 295 
+
+Mamluk Patronage 296 
+
+Nasrid Patronage: The Alhambra 299 
+
+THE THREE LATE EMPIRES 300 
+
+■ PRIMARY SOURCE: The Ottoman Sultan Selim II 
+
+(1524-1574) 300 
+
+
+■ MATERIALS AND TECHNIQUES: The Oriental Carpet 301 
+
+The Ottomans in Europe and Asia 302 
+
+The Safavid Period in Iran 304 
+
+The Mughal Period in India 308 
+
+■ PRIMARY SOURCE: Abd Al-Hamid Lahori (d. I 654) 309 
+
+CONTINUITY AND CHANGE IN 
+ISLAMIC ART 310 
+
+1 0 Early Medieval Art 313 
+
+ANGLO-SAXON ART 314 
+
+■ MATERIALS AND TECHNIQUES: Metalwork 315 
+
+The Animal Style 316 
+
+HIBERNO-SAXON ART 318 
+
+Manuscripts 318 
+
+■ PRIMARY SOURCE: Lindisfarne Gospels 320 
+
+VIKING ART 322 
