@@ -210,7 +210,7 @@ def make_image(pixel_list):
     pixel_list_start_index = 0
     pixel_list_end_index = 0
     num_of_img_parts = 1
-    remaining_print_height = print_height   
+    remaining_print_height = print_height
 
     while more_image_parts:
 
