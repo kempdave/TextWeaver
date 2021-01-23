@@ -6,9 +6,8 @@ text_filename = "texts/History_of_Art_Janson_GOOD.txt"
 save_name = "Janson"
 image_type = ".png"
 
-# Shaheer's Pixel are 15 x 32 (at 72 ppi)
+# Shaheer's Pixel squares are 15 x 32 (at 72 ppi)
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
-
 # 80pt text works well with 65x135
 # 60pt text works well with 45x80
 # 50pt text works well with
@@ -21,11 +20,11 @@ pixel_height = 72
 # 40" * 40" print = 12000 * 12000
 print_width = 3600
 
-# Maximum height for outputted image in pixels
+# Maximum height for outputted image in pixels (see above)
 max_image_height = 3600
 
-
 default_colour = (255, 255, 255)
+
 # \n = escape character for newline
 # allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\' \n"
 allowable_chars = "abcdefghijklmnopqrstuvwxyz 1234567890,./?;:!@#$%&()[]{}-+=\'"
@@ -83,6 +82,7 @@ def char_switcher(char):
     Case-like structure to convert characters to the parameters needed for each PixelSquare object
     """
 
+    # Creates a python dictionary for the char conversion to Shaheer's mapping system
     switcher = {
         "a": ["1", pixel_width, pixel_height, (252, 255, 54)],
         "b": ["2", pixel_width, pixel_height, (0, 255, 54)],
@@ -124,7 +124,7 @@ def char_switcher(char):
         # "\n": ["*", print_width, pixel_height, (255, 255, 255)],
     }
 
-    # Return switched char - if char is not in the list above return a white space
+    # Return switched char by using a dictionary .get - if char is not in the dictionary above it return a white space
     return switcher.get(char, ["", pixel_width, pixel_height, (255, 255, 255)])
 
 
@@ -184,7 +184,7 @@ def make_image(pixel_list):
 
     """
 
-    # Finds overall width of the linear pixel list
+    # Finds overall length of the linear pixel list
     pixel_list_length = 0
 
     for i in range(len(pixel_list)):
@@ -216,8 +216,8 @@ def make_image(pixel_list):
 
         if remaining_print_height > max_image_height:
 
-            # Determines the pixel_list_end_index for the partial list end index base on pixel in order to
-            # accommodate characters that are longer than 1 "square"wide
+            # Determines the pixel_list_end_index based on pixels in order to
+            # accommodate characters that are longer than 1 "square" wide
             temp_line_length_per_page = 0
             temp_pixel_list_start_index = pixel_list_start_index
 
@@ -228,7 +228,7 @@ def make_image(pixel_list):
                 temp_pixel_list_start_index += 1
                 pixel_list_end_index += 1
 
-            print("printing...")
+            print("image " + str(num_of_img_parts) + " printing...")
 
             # Creates a smaller partial pixel list that will be used to create the partial image
             partial_pixel_list = pixel_list[pixel_list_start_index:pixel_list_end_index]
@@ -236,7 +236,7 @@ def make_image(pixel_list):
             # Creates a new image with the appropriate dimensions
             weave_img = Image.new('RGB', (print_width, max_image_height), default_colour)
 
-            # Makes an image drawing object to elements can be added
+            # Makes an image drawing object so elements can be added
             img_draw = ImageDraw.Draw(weave_img)
 
             start_point_x = 0
@@ -248,16 +248,17 @@ def make_image(pixel_list):
                 end_point_x = start_point_x + partial_pixel_list[i].width
                 end_point_y = start_point_y + partial_pixel_list[i].height
 
-                # Detects if the end point will run over a row in which case it will start on a new row
+                # Detects if the end_point_x will run off the edge of the page in which case it will start on a new row
                 if end_point_x > print_width:
                     start_point_x = 0
                     end_point_x = start_point_x + partial_pixel_list[i].width
                     start_point_y = end_point_y
                     end_point_y += pixel_height
 
-                # Ends if it has gone off the page due to characters overflowing on the right side
-                # Basically accounting for the extra added white space
-                # Has to include start index so it works with the whole list
+                # Detects if the square being drawn has gone off the bottom of the page due to characters overflowing
+                # on the right side. Basically accounting for the extra added white space.
+                # Has to include the overall start index so it works with the whole list to adjust the starting point
+                # for the next image without missing any characters
                 if end_point_y > max_image_height:
                     pixel_list_end_index = pixel_list_start_index + i
                     break
@@ -269,11 +270,15 @@ def make_image(pixel_list):
                 text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
                 text_start_y = start_point_y + partial_pixel_list[i].height * text_top_margin_percent
 
-                # Could add a conversion to white text if needed
+                # Converts black text to grey when placed on a black square
+                if partial_pixel_list[i].pixel_colour == (0, 0, 0):
+                    img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font,
+                                  fill=(100, 100, 100))
+                else:
+                    img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font,
+                                  fill=(0, 0, 0))
 
-                img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font, fill='black')
-
-                # Increments to next square (if not going over the edge
+                # Increments to next square
                 start_point_x = end_point_x
 
             temp_save_name = ("output_images/" + save_name + "_" + str(num_of_img_parts))
@@ -327,9 +332,13 @@ def make_image(pixel_list):
                 text_start_x = start_point_x + partial_pixel_list[i].width * text_left_margin_percent
                 text_start_y = start_point_y + partial_pixel_list[i].height * text_top_margin_percent
 
-                # Could add a conversion to white text if needed
-
-                img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font, fill='black')
+                # Converts black text to grey when placed on a black square
+                if partial_pixel_list[i].pixel_colour == (0, 0, 0):
+                    img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font,
+                                  fill=(100, 100, 100))
+                else:
+                    img_draw.text((text_start_x, text_start_y), partial_pixel_list[i].letter, font=text_font,
+                                  fill=(0, 0, 0))
 
                 # Increments to next square (if not going over the edge
                 start_point_x = end_point_x
