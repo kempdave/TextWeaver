@@ -8,6 +8,7 @@ image_type = ".png"
 
 # Shaheer's Pixel are 15 x 32 (at 72 ppi)
 # use 7x18 (72ppi) or 15x32 (144-150ppi) or 65x135(300ppi)
+
 # 80pt text works well with 65x135
 # 60pt text works well with 45x80
 # 50pt text works well with
@@ -209,7 +210,7 @@ def make_image(pixel_list):
     pixel_list_start_index = 0
     pixel_list_end_index = 0
     num_of_img_parts = 1
-    remaining_print_height = print_height
+    remaining_print_height = print_height   
 
     while more_image_parts:
 
